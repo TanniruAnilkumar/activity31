@@ -1,6 +1,7 @@
-
+print("hari")
 
 from flask import Flask,request
+from model import predict_model
 
 app = Flask(__name__)
 
@@ -14,7 +15,10 @@ def basic():
 def soil():
     value = request.args.get('soil')
     print(value)
-    return{'msg':}
+    value = int(value)
+    response = predict_model(value)
+    return {'msg':response}
 
-   if __name__=="main_":
-    app.run('0.0.0.0',port=5001)
+
+if __name__=="__main__":
+    app.run('0.0.0.0',port=5001,debug=True)
